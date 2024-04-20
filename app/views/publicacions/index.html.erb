@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Publicaciones</h1>
+
+  <%= link_to 'Nueva Publicación', new_publicacion_path, class: 'btn btn-primary' %>
+
+  <% @publicacions.each do |publicacion| %>
+    <div class="card mt-3">
+      <div class="card-body">
+        <h2 class="card-title"><%= publicacion.titulo %></h2>
+        <% if publicacion.imagen.attached? %>
+          <%= image_tag publicacion.imagen, class: 'img-fluid', style: 'max-width: 500px; max-height: 500px;' %>
+        <% end %>
+        <p><%= publicacion.body %></p>
+        <div class="d-flex flex-column align-items-end"> 
+          <%= link_to 'Modificar', edit_publicacion_path(publicacion), class: 'btn btn-warning mb-2' %> 
+          <%= button_to 'Eliminar', publicacion, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-danger' %> 
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

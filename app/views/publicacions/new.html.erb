@@ -1,0 +1,46 @@
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+  <div class="card mt-3">
+    <div class="card-body">
+      <%= form_with(model: @publicacion, local: true) do |form| %>
+      
+        <div class="field">
+          <%= form.label :titulo %>
+          <%= form.text_field :titulo, class: 'form-control' %>
+          <% if @publicacion.errors.full_messages_for(:titulo).any? %>
+            <div class="alert alert-danger mt-2">
+              <%= @publicacion.errors.full_messages_for(:titulo).join(', ') %>
+            </div>
+          <% end %>
+        </div>
+      
+        <div class="field">
+          <%= form.label :body %>
+          <%= form.text_area :body, class: 'form-control' %>
+          <% if @publicacion.errors.full_messages_for(:body).any? %>
+            <div class="alert alert-danger mt-2">
+              <%= @publicacion.errors.full_messages_for(:body).join(', ') %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="field">
+          <%= form.label :imagen %>
+          <%= form.file_field :imagen, class: 'form-control-file' %>
+          <% if @publicacion.errors.full_messages_for(:imagen).any? %>
+            <div class="alert alert-danger mt-2">
+              <%= @publicacion.errors.full_messages_for(:imagen).join(', ') %>
+            </div>
+          <% end %>
+        </div>
+      
+        <div class="actions mt-3">
+          <%= form.submit class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-3">
+  <%= link_to 'Volver', publicacions_path, class: 'btn btn-secondary' %>
+</div>

@@ -1,0 +1,11 @@
+es:
+  activerecord:
+    errors:
+      models:
+        publicacion:
+          attributes:
+            titulo:
+              blank: "no puede estar en blanco"
+              too_short: "es demasiado corto (mínimo %{count})"
+            body:
+              blank: "no puede estar en blanco"

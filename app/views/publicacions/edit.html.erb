@@ -1,0 +1,41 @@
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+  <div class="card mt-3" style="width: 26rem;">
+    <div class="card-body">
+      <%= form_with(model: @publicacion, local: true, html: { class: 'needs-validation', novalidate: '' }) do |form| %>
+        <% if @publicacion.errors.any? %>
+          <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading"><%= pluralize(@publicacion.errors.count, "error") %> prohibited this publicacion from being saved:</h4>
+            <ul>
+            <% @publicacion.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= form.label :titulo, class: 'form-label' %>
+          <%= form.text_field :titulo, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :body, class: 'form-label' %>
+          <%= form.text_area :body, class: 'form-control' %>
+        </div>
+        
+        <div class="form-group">
+        <%= form.label :imagen, class: 'form-label' %>
+        <%= form.file_field :imagen, class: 'form-control-file', onchange: 'loadFile(event)' %>
+        <img id="output" style="max-width: 50px; max-height: 50px;"/>
+      </div>
+        <div class="actions">
+          <%= form.submit class: 'btn btn-primary' %>
+        </div>
+        <div class="actions">
+          <%= link_to 'Volver', publicacions_path, class: 'btn btn-secondary mt-3' %>
+        <div>
+      <% end %>
+    </div>
+  </div>  
+</div>
+
